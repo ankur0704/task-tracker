@@ -61,20 +61,14 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
+    /* Sidebar */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -106,6 +100,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -132,7 +127,7 @@
   .task-card-enter {
     @apply animate-[slide-in-up_0.3s_ease-out];
   }
-  
+
   .task-card-exit {
     @apply animate-[slide-out-down_0.2s_ease-in];
   }
@@ -146,7 +141,7 @@
   .btn-primary {
     @apply bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-hover)] transition-all duration-300;
   }
-  
+
   .btn-accent {
     @apply bg-gradient-to-r from-accent to-accent/90 text-accent-foreground shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-hover)] transition-all duration-300;
   }
