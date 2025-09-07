@@ -209,8 +209,8 @@ export const TaskTracker = () => {
 
         {/* Footer */}
         <div className="mt-12 text-center text-sm text-muted-foreground">
-          <p>Built with React, TypeScript & Tailwind CSS</p>
-          <p className="mt-1">Perfect for showcasing modern development skills ✨</p>
+          <p></p>
+          <p className="mt-1"></p>
         </div>
       </div>
     </div>
