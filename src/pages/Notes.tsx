@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "@/components/ui/use-toast";
+import { Layout } from "@/components/Layout";
 
 type Note = {
   id: string;
@@ -123,12 +124,11 @@ const Notes = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
-      <div className="container max-w-3xl mx-auto py-8 px-4">
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold">Notes</h1>
-          <p className="text-muted-foreground">Capture quick thoughts and ideas</p>
-        </div>
+    <Layout>
+      <div className="text-center mb-6">
+        <h1 className="text-3xl font-bold">Notes</h1>
+        <p className="text-muted-foreground">Capture quick thoughts and ideas</p>
+      </div>
 
         <Card className="p-4 mb-6 space-y-3">
           <div className="grid gap-2">
@@ -206,8 +206,7 @@ const Notes = () => {
             ))
           )}
         </div>
-      </div>
-    </div>
+    </Layout>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { TaskCard, Task } from "./TaskCard";
 import { TaskInput } from "./TaskInput";
 import { TaskFilter, FilterType } from "./TaskFilter";
@@ -6,35 +6,40 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckSquare, Plus, Target, Award } from "lucide-react";
 
+const STORAGE_KEY = "tt:tasks:v1";
+
+const loadTasks = (): Task[] => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed.map((t: any) => ({
+      ...t,
+      createdAt: new Date(t.createdAt)
+    })).filter(Boolean) as Task[];
+  } catch {
+    return [];
+  }
+};
+
+const saveTasks = (tasks: Task[]) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  } catch {
+    // ignore write errors
+  }
+};
+
 export const TaskTracker = () => {
-  const [tasks, setTasks] = useState<Task[]>([
-    {
-      id: "1",
-      title: "Set up project structure",
-      completed: true,
-      createdAt: new Date(Date.now() - 86400000)
-    },
-    {
-      id: "2", 
-      title: "Design clean UI components",
-      completed: true,
-      createdAt: new Date(Date.now() - 43200000)
-    },
-    {
-      id: "3",
-      title: "Implement task filtering",
-      completed: false,
-      createdAt: new Date()
-    },
-    {
-      id: "4",
-      title: "Add smooth animations",
-      completed: false,
-      createdAt: new Date()
-    }
-  ]);
+  const [tasks, setTasks] = useState<Task[]>(() => loadTasks());
   
   const [filter, setFilter] = useState<FilterType>('all');
+
+  // Persist tasks to localStorage
+  useEffect(() => {
+    saveTasks(tasks);
+  }, [tasks]);
 
   // Task statistics
   const taskStats = useMemo(() => {
@@ -65,7 +70,7 @@ export const TaskTracker = () => {
 
   const addTask = (title: string) => {
     const newTask: Task = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       title,
       completed: false,
       createdAt: new Date()
@@ -90,8 +95,7 @@ export const TaskTracker = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30">
-      <div className="container max-w-2xl mx-auto py-8 px-4">
+    <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 animate-fade-in">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl mb-4 shadow-[var(--shadow-elegant)]">
@@ -207,12 +211,6 @@ export const TaskTracker = () => {
           )}
         </div>
 
-        {/* Footer */}
-        <div className="mt-12 text-center text-sm text-muted-foreground">
-          <p></p>
-          <p className="mt-1"></p>
-        </div>
-      </div>
     </div>
   );
 };
