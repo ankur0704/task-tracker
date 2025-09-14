@@ -49,3 +49,34 @@ Allowing users to set tasks that repeat at specified intervals can be beneficial
 10. Dark Mode
 
 Implementing a dark mode can enhance user experience, especially for those who prefer low-light interfaces.
+
+
+Current Features:-
+
+✅ Task Management
+Add, edit, delete tasks
+Mark tasks as complete/incomplete
+Filter by status (all/active/completed)
+Real-time statistics
+✅ Notes System
+Create and edit notes
+Search functionality
+Pin important notes
+Rich text content
+✅ UI/UX
+Modern, responsive design
+Smooth animations
+Intuitive navigation
+Professional aesthetics
+
+Future Enhancement Opportunities:-
+
+The README mentions several potential improvements:
+Database integration (SQLite/JSON file)
+Task prioritization levels
+Due dates and reminders
+User authentication
+Mobile app development
+Analytics and reporting
+Recurring tasks
+Dark mode toggle
