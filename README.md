@@ -339,7 +339,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@https://github.com/ankur0704](https://github.com/your-username)
+- GitHub: [https://github.com/ankur0704](https://github.com/your-username)
 - Email: sonavaeankur@gmail.com
 
 ## 🙏 Acknowledgments
